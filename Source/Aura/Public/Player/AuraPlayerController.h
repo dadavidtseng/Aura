@@ -11,6 +11,8 @@
 
 //----------------------------------------------------------------------------------------------------
 class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()
@@ -23,8 +25,14 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
 
 private:
 	UPROPERTY(EditAnywhere, Category="Imput")
 	TObjectPtr<UInputMappingContext> AuraContext;
+
+	UPROPERTY(EditAnywhere, Category="Imput")
+	TObjectPtr<UInputAction> MoveAction;
+
+	void Move(FInputActionValue const& InputActionValue);
 };
