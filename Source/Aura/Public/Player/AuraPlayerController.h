@@ -10,10 +10,10 @@
 #include "AuraPlayerController.generated.h"
 
 //----------------------------------------------------------------------------------------------------
-class UInputMappingContext;
-class UInputAction;
-struct FInputActionValue;
 class IEnemyInterface;
+class UInputAction;
+class UInputMappingContext;
+struct FInputActionValue;
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()
