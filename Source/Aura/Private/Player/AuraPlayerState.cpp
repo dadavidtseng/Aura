@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------------------------------------
 AAuraPlayerState::AAuraPlayerState()
 {
+	// AbilitySystemComponent and AttributeSet have valid values for the player state, but not for the character.
 	AbilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);	// Multiplayer, Player-Controlled
