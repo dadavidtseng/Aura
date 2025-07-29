@@ -5,12 +5,15 @@
 //----------------------------------------------------------------------------------------------------
 #include "AbilitySystem/AuraAttributeSet.h"
 
-#include <AbilitySystemComponent.h>
 #include <Net/UnrealNetwork.h>
 
 //----------------------------------------------------------------------------------------------------
 UAuraAttributeSet::UAuraAttributeSet()
 {
+	InitHealth(100.f);
+	InitMaxHealth(200.f);
+	InitMana(300.f);
+	InitMaxMana(400.f);
 }
 
 //----------------------------------------------------------------------------------------------------
