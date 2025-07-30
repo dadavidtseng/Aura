@@ -5,9 +5,11 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
+#include <CoreMinimal.h>
+
 #include "Character/AuraCharacterBase.h"
-#include "AuraCharacter.generated.h"
+
+#include <AuraCharacter.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()

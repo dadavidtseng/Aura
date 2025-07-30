@@ -5,9 +5,9 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "UObject/Interface.h"
-#include "EnemyInterface.generated.h"
+#include <CoreMinimal.h>
+#include <UObject/Interface.h>
+#include <EnemyInterface.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 // This class does not need to be modified.

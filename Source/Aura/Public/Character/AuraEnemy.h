@@ -5,10 +5,12 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
+#include <CoreMinimal.h>
+
 #include "Character/AuraCharacterBase.h"
 #include "Interaction/EnemyInterface.h"
-#include "AuraEnemy.generated.h"
+
+#include <AuraEnemy.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()

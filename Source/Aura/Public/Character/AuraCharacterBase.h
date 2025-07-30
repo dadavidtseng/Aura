@@ -5,14 +5,14 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "AbilitySystemInterface.h"
-#include "GameFramework/Character.h"
-#include "AuraCharacterBase.generated.h"
+#include <CoreMinimal.h>
+#include <AbilitySystemInterface.h>
+#include <GameFramework/Character.h>
+#include <AuraCharacterBase.generated.h>
 
 //-Forward-Declaration--------------------------------------------------------------------------------
-class UAttributeSet;
 class UAbilitySystemComponent;
+class UAttributeSet;
 
 //----------------------------------------------------------------------------------------------------
 // By adding abstract specifier to the class macro,

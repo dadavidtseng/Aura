@@ -5,9 +5,9 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "AuraEffectActor.generated.h"
+#include <CoreMinimal.h>
+#include <GameFramework/Actor.h>
+#include <AuraEffectActor.generated.h>
 
 //-Forward-Declaration--------------------------------------------------------------------------------
 class USphereComponent;

@@ -5,10 +5,10 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "AttributeSet.h"
+#include <CoreMinimal.h>
 #include <AbilitySystemComponent.h>
-#include "AuraAttributeSet.generated.h"
+#include <AttributeSet.h>
+#include <AuraAttributeSet.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \

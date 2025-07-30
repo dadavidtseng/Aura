@@ -5,9 +5,9 @@
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "AbilitySystemComponent.h"
-#include "AuraAbilitySystemComponent.generated.h"
+#include <CoreMinimal.h>
+#include <AbilitySystemComponent.h>
+#include <AuraAbilitySystemComponent.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()

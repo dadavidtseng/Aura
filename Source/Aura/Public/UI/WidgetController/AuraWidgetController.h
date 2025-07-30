@@ -6,7 +6,6 @@
 #pragma once
 
 #include <CoreMinimal.h>
-
 #include <AuraWidgetController.generated.h>
 
 //-Forward-Declaration--------------------------------------------------------------------------------
