@@ -1,29 +1,19 @@
 //----------------------------------------------------------------------------------------------------
-// AuraUserWidget.h
+// OverlayWidgetController.h
 //----------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------
 #pragma once
 
 #include <CoreMinimal.h>
-#include <Blueprint/UserWidget.h>
-#include <AuraUserWidget.generated.h>
+
+#include "UI/WidgetController/AuraWidgetController.h"
+
+#include <OverlayWidgetController.generated.h>
 
 //----------------------------------------------------------------------------------------------------
 UCLASS()
-class AURA_API UAuraUserWidget : public UUserWidget
+class AURA_API UOverlayWidgetController : public UAuraWidgetController
 {
 	GENERATED_BODY()
-
-public:
-	UFUNCTION(BlueprintCallable)
-	void SetWidgetController(UObject* In_WidgetController);
-
-	/// @brief This is a test text.
-	UPROPERTY(BlueprintReadOnly)
-	TObjectPtr<UObject> WidgetController;
-
-protected:
-	UFUNCTION(BlueprintImplementableEvent)
-	void WidgetControllerSet();
 };
