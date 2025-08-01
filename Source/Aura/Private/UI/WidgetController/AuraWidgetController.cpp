@@ -17,3 +17,7 @@ void UAuraWidgetController::SetWidgetControllerParams(FWidgetControllerParams co
 void UAuraWidgetController::BroadcastInitialValues()
 {
 }
+
+void UAuraWidgetController::BindCallbacksToDependencies()
+{
+}
