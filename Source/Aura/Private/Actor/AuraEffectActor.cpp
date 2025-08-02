@@ -66,10 +66,10 @@ void AAuraEffectActor::BeginPlay()
 }
 
 //----------------------------------------------------------------------------------------------------
-void AAuraEffectActor::ApplyEffectToTarget(AActor*                            Target,
+void AAuraEffectActor::ApplyEffectToTarget(AActor*                            TargetActor,
                                            TSubclassOf<UGameplayEffect> const GameplayEffectClass) const
 {
-	UAbilitySystemComponent* TargetAbilitySystemComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Target);
+	UAbilitySystemComponent* TargetAbilitySystemComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 	if (TargetAbilitySystemComponent == nullptr) return;
 
 	check(GameplayEffectClass);
