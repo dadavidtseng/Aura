@@ -39,8 +39,16 @@ void AAuraEnemy::UnHighlightActor()
 	Weapon->SetRenderCustomDepth(false);
 }
 
+//----------------------------------------------------------------------------------------------------
 void AAuraEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	AbilitySystemComponent->InitAbilityActorInfo(this,this);
+	InitAbilityActorInfo();
+}
+
+//----------------------------------------------------------------------------------------------------
+void AAuraEnemy::InitAbilityActorInfo()
+{
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 }
