@@ -32,6 +32,22 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 }
 
 //----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::PreAttributeChange(FGameplayAttribute const& Attribute,
+                                           float&                    NewValue)
+{
+	Super::PreAttributeChange(Attribute, NewValue);
+
+	if (Attribute == GetHealthAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHealth());
+	}
+	else if (Attribute == GetManaAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana());
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
 void UAuraAttributeSet::OnRep_Health(FGameplayAttributeData const& OldHealth) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Health, OldHealth)

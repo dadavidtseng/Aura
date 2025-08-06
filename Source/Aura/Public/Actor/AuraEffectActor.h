@@ -40,12 +40,6 @@ class AURA_API AAuraEffectActor : public AActor
 public:
 	AAuraEffectActor();
 
-	// UFUNCTION()
-	// virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, FHitResult const& SweepResult);
-	//
-	// UFUNCTION()
-	// virtual void OnEndOverlap( UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
 protected:
 	virtual void BeginPlay() override;
 
@@ -61,22 +55,23 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	bool bDestroyOnEffectRemoval = false;
 
+	// Instant effects `BaseValue` on `FGameplayAttributeData`
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	// TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
 	TArray<TSubclassOf<UGameplayEffect>> InstantGameplayEffectClasses;
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	EEffectApplicationPolicy InstantEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
+	// Duration effects `CurrentValue` on `FGameplayAttributeData`
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	// TSubclassOf<UGameplayEffect> DurationGameplayEffectClass;
 	TArray<TSubclassOf<UGameplayEffect>> DurationGameplayEffectClasses;
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	EEffectApplicationPolicy DurationEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
+	// Infinite effects `CurrentValue` on `FGameplayAttributeData`
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	// TSubclassOf<UGameplayEffect> InfiniteGameplayEffectClass;
 	TArray<TSubclassOf<UGameplayEffect>> InfiniteGameplayEffectClasses;
@@ -91,10 +86,4 @@ protected:
 
 private:
 	void ApplyEffectToTargetInternal(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass);
-	// private:
-	// UPROPERTY(VisibleAnywhere)
-	// TObjectPtr<USphereComponent> Sphere;
-	//
-	// UPROPERTY(VisibleAnywhere)
-	// TObjectPtr<UStaticMeshComponent> Mesh;
 };
