@@ -17,14 +17,6 @@ class UAuraUserWidget;
 struct FOnAttributeChangeData;
 
 //----------------------------------------------------------------------------------------------------
-/// @brief Type declaration.
-/// Dynamic -> Supports Unreal's reflection system, so you can bind it in Blueprint.
-/// Multicast -> Allows multiple listeners to be bound at the same time.
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
-
 USTRUCT(BlueprintType)
 struct FUIWidgetRow : public FTableRowBase
 {
@@ -42,6 +34,17 @@ struct FUIWidgetRow : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Image = nullptr;
 };
+
+
+//----------------------------------------------------------------------------------------------------
+/// @brief Type declaration.
+/// Dynamic -> Supports Unreal's reflection system, so you can bind it in Blueprint.
+/// Multicast -> Allows multiple listeners to be bound at the same time.
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageWidgetRowSignature, FUIWidgetRow, Row);
 
 //----------------------------------------------------------------------------------------------------
 UCLASS(BlueprintType, Blueprintable)
@@ -63,7 +66,8 @@ public:
 	FOnManaChangedSignature OnManaChanged;
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnMaxManaChangedSignature OnMaxManaChanged;
-
+	UPROPERTY(BlueprintAssignable, Category = "GAS|Messages")
+	FMessageWidgetRowSignature MessageWidgetRowDelegate;
 protected:
 	/// @brief Callback functions bound to attribute change events.
 	/// These functions receive data from the ability system and broadcast it to Blueprint via delegates.
