@@ -29,14 +29,18 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetMaxHealthAttribute()).AddUObject(this, &UOverlayWidgetController::MaxHealthChanged);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetManaAttribute()).AddUObject(this, &UOverlayWidgetController::ManaChanged);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetMaxManaAttribute()).AddUObject(this, &UOverlayWidgetController::MaxManaChanged);
+
 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
-		[](FGameplayTagContainer const& AssetTags)
-		{
+		[this](FGameplayTagContainer const& AssetTags) {
 			for (FGameplayTag const& Tag : AssetTags)
 			{
 				FString const Msg = FString::Printf(TEXT("GE Tag: %s"), *Tag.ToString());
 				//TODO: Broadcast the tag to the WidgetController
 				GEngine->AddOnScreenDebugMessage(-1, 8.f, FColor::Red, Msg);
+
+				// If you want to call a member function in a lambda,
+				// you'll have to capture that function's object class.
+				FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable, Tag);
 			}
 		});
 }
