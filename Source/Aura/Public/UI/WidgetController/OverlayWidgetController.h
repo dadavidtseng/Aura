@@ -40,11 +40,12 @@ struct FUIWidgetRow : public FTableRowBase
 /// @brief Type declaration.
 /// Dynamic -> Supports Unreal's reflection system, so you can bind it in Blueprint.
 /// Multicast -> Allows multiple listeners to be bound at the same time.
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAttributeChangedSignature, float, NewValue);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageWidgetRowSignature, FUIWidgetRow, Row);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
 
 //----------------------------------------------------------------------------------------------------
 UCLASS(BlueprintType, Blueprintable)
@@ -59,22 +60,22 @@ public:
 	/// @brief Event instances that Blueprint can bind to.
 	/// These multicast delegates broadcast attribute changes to Blueprint UI or other listeners.
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
-	FOnHealthChangedSignature OnHealthChanged;
+	FOnAttributeChangedSignature OnHealthChanged;
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
-	FOnMaxHealthChangedSignature OnMaxHealthChanged;
+	FOnAttributeChangedSignature OnMaxHealthChanged;
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
-	FOnManaChangedSignature OnManaChanged;
+	FOnAttributeChangedSignature OnManaChanged;
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
-	FOnMaxManaChangedSignature OnMaxManaChanged;
+	FOnAttributeChangedSignature OnMaxManaChanged;
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Messages")
 	FMessageWidgetRowSignature MessageWidgetRowDelegate;
 protected:
 	/// @brief Callback functions bound to attribute change events.
 	/// These functions receive data from the ability system and broadcast it to Blueprint via delegates.
-	void HealthChanged(FOnAttributeChangeData const& Data) const;
-	void MaxHealthChanged(FOnAttributeChangeData const& Data) const;
-	void ManaChanged(FOnAttributeChangeData const& Data) const;
-	void MaxManaChanged(FOnAttributeChangeData const& Data) const;
+	// void HealthChanged(FOnAttributeChangeData const& Data) const;
+	// void MaxHealthChanged(FOnAttributeChangeData const& Data) const;
+	// void ManaChanged(FOnAttributeChangeData const& Data) const;
+	// void MaxManaChanged(FOnAttributeChangeData const& Data) const;
 
 	template<typename T>
 	T* GetDataTableRowByTag(UDataTable* DataTable, FGameplayTag const& Tag);
