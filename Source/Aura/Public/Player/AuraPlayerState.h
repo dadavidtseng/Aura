@@ -27,7 +27,7 @@ public:
 
 protected:
 	/* The core ActorComponent for interfacing with the GameplayAbilities System */
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
 	/*

@@ -58,6 +58,26 @@ public:
 	virtual void PreAttributeChange(FGameplayAttribute const& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(FGameplayEffectModCallbackData const& Data) override;
 
+
+	//-Primary-Attributes---------------------------------------------------------------------------------
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Strength, Category = "Primary Attributes")
+	FGameplayAttributeData Strength;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Strength)
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Intelligence, Category = "Primary Attributes")
+	FGameplayAttributeData Intelligence;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Intelligence)
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Resilience, Category = "Primary Attributes")
+	FGameplayAttributeData Resilience;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Resilience)
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Vigor, Category = "Primary Attributes")
+	FGameplayAttributeData Vigor;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Vigor)
+	//----------------------------------------------------------------------------------------------------
+
+	//-Vital-Attributes-----------------------------------------------------------------------------------
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Health)
@@ -73,6 +93,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxMana, Category = "Vital Attributes")
 	FGameplayAttributeData MaxMana;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxMana)
+	//----------------------------------------------------------------------------------------------------
 
 	UFUNCTION()
 	void OnRep_Health(FGameplayAttributeData const& OldHealth) const;
@@ -82,6 +103,14 @@ public:
 	void OnRep_Mana(FGameplayAttributeData const& OldMana) const;
 	UFUNCTION()
 	void OnRep_MaxMana(FGameplayAttributeData const& OldMaxMana) const;
+	UFUNCTION()
+	void OnRep_Strength(FGameplayAttributeData const& OldStrength) const;
+	UFUNCTION()
+	void OnRep_Intelligence(FGameplayAttributeData const& OldIntelligence) const;
+	UFUNCTION()
+	void OnRep_Resilience(FGameplayAttributeData const& OldResilience) const;
+	UFUNCTION()
+	void OnRep_Vigor(FGameplayAttributeData const& OldVigor) const;
 
 private:
 	void SetEffectProperties(FGameplayEffectModCallbackData const& Data, FEffectProperties& EffectProperties) const;

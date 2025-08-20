@@ -29,6 +29,11 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 	// COND_None means it should always replicate; no condition
 	// `REPNOTIFY_Always` means the OnRep function will always be triggered when replication happens
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Strength, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Intelligence, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Resilience, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Vigor, COND_None, REPNOTIFY_Always)
+
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Health, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Mana, COND_None, REPNOTIFY_Always)
@@ -91,6 +96,28 @@ void UAuraAttributeSet::OnRep_Mana(FGameplayAttributeData const& OldMana) const
 void UAuraAttributeSet::OnRep_MaxMana(FGameplayAttributeData const& OldMaxMana) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_Strength(FGameplayAttributeData const& OldStrength) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldStrength)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_Intelligence(FGameplayAttributeData const& OldIntelligence) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldIntelligence)
+}
+
+void UAuraAttributeSet::OnRep_Resilience(FGameplayAttributeData const& OldResilience) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldResilience)
+}
+
+void UAuraAttributeSet::OnRep_Vigor(FGameplayAttributeData const& OldVigor) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldVigor)
 }
 
 //----------------------------------------------------------------------------------------------------
