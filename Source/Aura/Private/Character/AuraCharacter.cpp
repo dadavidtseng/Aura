@@ -36,7 +36,7 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 	InitAbilityActorInfo();
 	// This could be called on both client and server side.
 	// But it's okay to just call it on server, and it will be replicated to clients afterward.
-	InitializePrimaryAttributes();
+	InitializeDefaultAttributes();
 }
 
 //----------------------------------------------------------------------------------------------------
