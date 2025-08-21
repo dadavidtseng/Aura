@@ -29,15 +29,28 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 	// COND_None means it should always replicate; no condition
 	// `REPNOTIFY_Always` means the OnRep function will always be triggered when replication happens
+
+	//-Primary-Attributes---------------------------------------------------------------------------------
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Strength, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Intelligence, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Resilience, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Vigor, COND_None, REPNOTIFY_Always)
 
-	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Health, COND_None, REPNOTIFY_Always)
+	//-Secondary-Attributes-------------------------------------------------------------------------------
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Armor, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, ArmorPenetration, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, BlockChance, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, CriticalHitChance, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, CriticalHitDamage, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, CriticalHitResistance, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, HealthRegeneration, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, ManaRegeneration, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always)
-	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Mana, COND_None, REPNOTIFY_Always)
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxMana, COND_None, REPNOTIFY_Always)
+
+	//-Vital-Attributes-----------------------------------------------------------------------------------
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Health, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Mana, COND_None, REPNOTIFY_Always)
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -75,30 +88,6 @@ void UAuraAttributeSet::PostGameplayEffectExecute(FGameplayEffectModCallbackData
 }
 
 //----------------------------------------------------------------------------------------------------
-void UAuraAttributeSet::OnRep_Health(FGameplayAttributeData const& OldHealth) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Health, OldHealth)
-}
-
-//----------------------------------------------------------------------------------------------------
-void UAuraAttributeSet::OnRep_MaxHealth(FGameplayAttributeData const& OldMaxHealth) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxHealth, OldMaxHealth)
-}
-
-//----------------------------------------------------------------------------------------------------
-void UAuraAttributeSet::OnRep_Mana(FGameplayAttributeData const& OldMana) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Mana, OldMana)
-}
-
-//----------------------------------------------------------------------------------------------------
-void UAuraAttributeSet::OnRep_MaxMana(FGameplayAttributeData const& OldMaxMana) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana)
-}
-
-//----------------------------------------------------------------------------------------------------
 void UAuraAttributeSet::OnRep_Strength(FGameplayAttributeData const& OldStrength) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldStrength)
@@ -118,6 +107,70 @@ void UAuraAttributeSet::OnRep_Resilience(FGameplayAttributeData const& OldResili
 void UAuraAttributeSet::OnRep_Vigor(FGameplayAttributeData const& OldVigor) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldVigor)
+}
+
+void UAuraAttributeSet::OnRep_Armor(FGameplayAttributeData const& OldArmor) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Armor, OldArmor)
+}
+
+void UAuraAttributeSet::OnRep_ArmorPenetration(FGameplayAttributeData const& OldArmorPenetration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ArmorPenetration, OldArmorPenetration)
+}
+
+void UAuraAttributeSet::OnRep_BlockChance(FGameplayAttributeData const& OldBlockChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, BlockChance, OldBlockChance)
+}
+
+void UAuraAttributeSet::OnRep_CriticalHitChance(FGameplayAttributeData const& OldCriticalHitChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitChance, OldCriticalHitChance)
+}
+
+void UAuraAttributeSet::OnRep_CriticalHitDamage(FGameplayAttributeData const& OldCriticalHitDamage) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitDamage, OldCriticalHitDamage)
+}
+
+void UAuraAttributeSet::OnRep_CriticalHitResistance(FGameplayAttributeData const& OldCriticalHitResistance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitResistance, OldCriticalHitResistance)
+}
+
+void UAuraAttributeSet::OnRep_HealthRegeneration(FGameplayAttributeData const& OldHealthRegeneration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, HealthRegeneration, OldHealthRegeneration)
+}
+
+void UAuraAttributeSet::OnRep_ManaRegeneration(FGameplayAttributeData const& OldManaRegeneration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ManaRegeneration, OldManaRegeneration)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_MaxHealth(FGameplayAttributeData const& OldMaxHealth) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxHealth, OldMaxHealth)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_MaxMana(FGameplayAttributeData const& OldMaxMana) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_Health(FGameplayAttributeData const& OldHealth) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Health, OldHealth)
+}
+
+//----------------------------------------------------------------------------------------------------
+void UAuraAttributeSet::OnRep_Mana(FGameplayAttributeData const& OldMana) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Mana, OldMana)
 }
 
 //----------------------------------------------------------------------------------------------------
