@@ -7,6 +7,7 @@
 
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "Net/UnrealNetwork.h"
 
 //----------------------------------------------------------------------------------------------------
 AAuraPlayerState::AAuraPlayerState()
@@ -27,12 +28,26 @@ AAuraPlayerState::AAuraPlayerState()
 	// And this behavior of data transmitting from server to client is called `Replication`
 }
 
+//----------------------------------------------------------------------------------------------------
+void AAuraPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AAuraPlayerState, Level);
+}
+
+//----------------------------------------------------------------------------------------------------
 UAbilitySystemComponent* AAuraPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
 
+//----------------------------------------------------------------------------------------------------
 UAttributeSet* AAuraPlayerState::GetAttributeSet() const
 {
 	return AttributeSet;
+}
+
+//----------------------------------------------------------------------------------------------------
+void AAuraPlayerState::On_RepLevel(int32 OldLevel)
+{
 }

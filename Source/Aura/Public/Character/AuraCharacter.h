@@ -22,7 +22,9 @@ public:
 
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
-
+	//-Start-of-CombatInterface---------------------------------------------------------------------------
+	virtual int32 GetPlayerLevel() override;
+	//-End-of-CombatInterface-----------------------------------------------------------------------------
 private:
 	virtual void InitAbilityActorInfo() override;
 };
