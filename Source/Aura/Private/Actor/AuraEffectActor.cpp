@@ -143,9 +143,9 @@ void AAuraEffectActor::ApplyEffectToTargetInternal(AActor*                      
 	if (TargetAbilitySystemComponent == nullptr) return;
 
 	check(GameplayEffectClass);
-	FGameplayEffectContextHandle EffectContextHandle = TargetAbilitySystemComponent->MakeEffectContext();
-	EffectContextHandle.AddSourceObject(this);
-	FGameplayEffectSpecHandle const   TargetGameplayEffectSpecHandle = TargetAbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, ActorLevel, EffectContextHandle);
+	FGameplayEffectContextHandle ContextHandle = TargetAbilitySystemComponent->MakeEffectContext();
+	ContextHandle.AddSourceObject(this);
+	FGameplayEffectSpecHandle const   TargetGameplayEffectSpecHandle = TargetAbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, ActorLevel, ContextHandle);
 	FActiveGameplayEffectHandle const ActiveEffectHandle             = TargetAbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*TargetGameplayEffectSpecHandle.Data.Get());
 
 	bool const bIsInfinite = TargetGameplayEffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;
