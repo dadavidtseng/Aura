@@ -59,26 +59,26 @@ graph TD
     H --> H2["EnemyInterface"];
     I --> I1["AuraEffectActor"];
 
-    click C "./Source/Aura/Game/CLAUDE.md" "View Game module documentation"
-    click D "./Source/Aura/Player/CLAUDE.md" "View Player module documentation"
-    click E "./Source/Aura/Character/CLAUDE.md" "View Character module documentation"
-    click F "./Source/Aura/AbilitySystem/CLAUDE.md" "View AbilitySystem module documentation"
-    click G "./Source/Aura/UI/CLAUDE.md" "View UI module documentation"
-    click H "./Source/Aura/Interaction/CLAUDE.md" "View Interaction module documentation"
-    click I "./Source/Aura/Actor/CLAUDE.md" "View Actor module documentation"
+    click C "./Source/Aura/Private/Game/CLAUDE.md" "View Game module documentation"
+    click D "./Source/Aura/Private/Player/CLAUDE.md" "View Player module documentation"
+    click E "./Source/Aura/Private/Character/CLAUDE.md" "View Character module documentation"
+    click F "./Source/Aura/Private/AbilitySystem/CLAUDE.md" "View AbilitySystem module documentation"
+    click G "./Source/Aura/Private/UI/CLAUDE.md" "View UI module documentation"
+    click H "./Source/Aura/Private/Interaction/CLAUDE.md" "View Interaction module documentation"
+    click I "./Source/Aura/Private/Actor/CLAUDE.md" "View Actor module documentation"
 ```
 
 ## Module Index
 
 | Module | Path | Primary Responsibility | Key Classes | Status |
 |--------|------|----------------------|-------------|--------|
-| **Game** | `Source/Aura/Game/` | Core game framework and mode management | AuraGameModeBase | Active |
-| **Player** | `Source/Aura/Player/` | Player-specific controllers and state | AuraPlayerController, AuraPlayerState | Active |
-| **Character** | `Source/Aura/Character/` | Character implementations and base classes | AuraCharacterBase, AuraCharacter, AuraEnemy | Active |
-| **AbilitySystem** | `Source/Aura/AbilitySystem/` | Gameplay Ability System implementation | AuraAbilitySystemComponent, AuraAttributeSet | Active |
-| **UI** | `Source/Aura/UI/` | User interface and widget management | AuraHUD, AuraUserWidget, Widget Controllers | Active |
-| **Interaction** | `Source/Aura/Interaction/` | Interface-based communication systems | CombatInterface, EnemyInterface | Active |
-| **Actor** | `Source/Aura/Actor/` | World actors and effect systems | AuraEffectActor | Active |
+| **Game** | `Source/Aura/Private/Game/` | Core game framework and mode management | AuraGameModeBase | Active |
+| **Player** | `Source/Aura/Private/Player/` | Player-specific controllers and state | AuraPlayerController, AuraPlayerState | Active |
+| **Character** | `Source/Aura/Private/Character/` | Character implementations and base classes | AuraCharacterBase, AuraCharacter, AuraEnemy | Active |
+| **AbilitySystem** | `Source/Aura/Private/AbilitySystem/` | Gameplay Ability System implementation | AuraAbilitySystemComponent, AuraAttributeSet | Active |
+| **UI** | `Source/Aura/Private/UI/` | User interface and widget management | AuraHUD, AuraUserWidget, Widget Controllers | Active |
+| **Interaction** | `Source/Aura/Private/Interaction/` | Interface-based communication systems | CombatInterface, EnemyInterface | Active |
+| **Actor** | `Source/Aura/Private/Actor/` | World actors and effect systems | AuraEffectActor | Active |
 
 ## Running and Development
 
