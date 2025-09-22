@@ -18,6 +18,9 @@
 		GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
 //----------------------------------------------------------------------------------------------------
+// DECLARE_DELEGATE_RetVal(FGameplayAttribute, FAttributeSignature);
+
+//----------------------------------------------------------------------------------------------------
 USTRUCT()
 struct FEffectProperties
 {
@@ -47,6 +50,12 @@ struct FEffectProperties
 };
 
 //----------------------------------------------------------------------------------------------------
+// typedef is specific to the FGameplayAttribute() signature, but TStaticFuncPtr is generic to any signature chosen.
+// typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
+template <class T>
+using TStaticFuncPtr = TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
+//----------------------------------------------------------------------------------------------------
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {
@@ -57,6 +66,12 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	virtual void PreAttributeChange(FGameplayAttribute const& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(FGameplayEffectModCallbackData const& Data) override;
+
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributesMap;
+
+	/// This allows us to bind a function that returns with type `FGameplayAttribute` and takes 0 input parameter.
+	/// https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Core/Delegates/TDelegate_InRetValType_ParamType-/CreateStatic?application_version=5.6
+	// TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FunctionPointer;
 
 	//-Primary-Attributes---------------------------------------------------------------------------------
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Strength, Category = "Primary Attributes")

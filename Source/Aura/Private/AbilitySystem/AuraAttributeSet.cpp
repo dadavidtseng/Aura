@@ -10,10 +10,22 @@
 #include <Net/UnrealNetwork.h>
 
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AuraGameplayTags.h"
 
 //----------------------------------------------------------------------------------------------------
 UAuraAttributeSet::UAuraAttributeSet()
 {
+	FAuraGameplayTags const& GameplayTags = FAuraGameplayTags::Get();
+
+	// https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Core/Misc/TAttribute/BindStatic?application_version=5.6
+	// FAttributeSignature StrengthDelegate;
+	// StrengthDelegate.BindStatic(GetStrengthAttribute);
+	// TagsToAttributesMap.Add(GameplayTags.Attributes_Primary_Strength, StrengthDelegate);
+
+	TagsToAttributesMap.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
+	TagsToAttributesMap.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+	TagsToAttributesMap.Add(GameplayTags.Attributes_Primary_Resilience, GetResilienceAttribute);
+	TagsToAttributesMap.Add(GameplayTags.Attributes_Primary_Vigor, GetVigorAttribute);
 }
 
 //----------------------------------------------------------------------------------------------------

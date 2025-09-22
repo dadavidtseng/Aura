@@ -9,7 +9,10 @@
 #include <Kismet/BlueprintFunctionLibrary.h>
 #include <AuraAbilitySystemLibrary.generated.h>
 
+//-Forward-Declaration--------------------------------------------------------------------------------
+class UAttributeMenuWidgetController;
 class UOverlayWidgetController;
+
 //----------------------------------------------------------------------------------------------------
 UCLASS()
 class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
@@ -21,4 +24,7 @@ public:
 	// In order to access things in the world, it needs `WorldContext`.
 	UFUNCTION(BlueprintPure, Category = "AuraAbilitySystemLibrary | WidgetController")
 	static UOverlayWidgetController* GetOverlayWidgetController(UObject const* WorldContextObject);
+
+	UFUNCTION(BlueprintPure, Category = "AuraAbilitySystemLibrary | WidgetController")
+	static UAttributeMenuWidgetController* GetAttributeMenuWidgetController(UObject const* WorldContextObject);
 };
