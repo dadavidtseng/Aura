@@ -7,6 +7,7 @@
 
 #include <CoreMinimal.h>
 
+#include "AbilitySystem/AuraAttributeSet.h"
 #include "UI/WidgetController/AuraWidgetController.h"
 
 #include <AttributeMenuWidgetController.generated.h>
@@ -35,4 +36,7 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
+
+private:
+	void BroadcastAttributeInfo(FGameplayTag const& AttributeTag, FGameplayAttribute const& Attribute) const;
 };
