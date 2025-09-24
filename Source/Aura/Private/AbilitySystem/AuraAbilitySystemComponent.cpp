@@ -14,6 +14,17 @@ void UAuraAbilitySystemComponent::AbilityActorInfoSet()
 }
 
 //----------------------------------------------------------------------------------------------------
+void UAuraAbilitySystemComponent::AddCharacterAbilities(TArray<TSubclassOf<UGameplayAbility>> const& StartupAbilities)
+{
+	for (TSubclassOf AbilityClass : StartupAbilities)
+	{
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1);
+		// GiveAbility(AbilitySpec);
+		GiveAbilityAndActivateOnce(AbilitySpec);
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
 void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent*    AbilitySystemComponent,
                                                 FGameplayEffectSpec const&  GameplayEffectSpec,
                                                 FActiveGameplayEffectHandle ActiveGameplayEffectHandle)

@@ -7,6 +7,8 @@
 
 #include <AbilitySystemComponent.h>
 
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
+
 //----------------------------------------------------------------------------------------------------
 AAuraCharacterBase::AAuraCharacterBase()
 {
@@ -56,4 +58,14 @@ void AAuraCharacterBase::InitializeDefaultAttributes() const
 	ApplyEffectToSelf(DefaultPrimaryAttributes);
 	ApplyEffectToSelf(DefaultSecondaryAttributes);
 	ApplyEffectToSelf(DefaultVitalAttributes);
+}
+
+//----------------------------------------------------------------------------------------------------
+void AAuraCharacterBase::AddCharacterAbilities()
+{
+	if (!HasAuthority()) return;
+
+	UAuraAbilitySystemComponent* AuraAbilitySystemComponent = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+
+	AuraAbilitySystemComponent->AddCharacterAbilities(StartupAbilities);
 }

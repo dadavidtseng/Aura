@@ -16,6 +16,7 @@
 //-Forward-Declaration--------------------------------------------------------------------------------
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UGameplayAbility;
 class UGameplayEffect;
 
 //----------------------------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ protected:
 	virtual void InitAbilityActorInfo();
 	void         ApplyEffectToSelf(TSubclassOf<UGameplayEffect> const& GameplayEffectClass, float Level = 1.f) const;
 	void         InitializeDefaultAttributes() const;
+void AddCharacterAbilities();
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
@@ -49,4 +51,8 @@ protected:
 	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Attributes")
 	TSubclassOf<UGameplayEffect> DefaultVitalAttributes;
+
+private:
+	UPROPERTY(EditAnywhere, Category = "Abilities")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };
