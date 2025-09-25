@@ -26,7 +26,6 @@ AAuraCharacter::AAuraCharacter()
 	bUseControllerRotationYaw   = false;
 }
 
-
 //----------------------------------------------------------------------------------------------------
 void AAuraCharacter::PossessedBy(AController* NewController)
 {
