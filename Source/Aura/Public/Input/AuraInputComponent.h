@@ -1,26 +1,51 @@
-﻿// 
+﻿//----------------------------------------------------------------------------------------------------
+// AuraInputComponent.h
+//----------------------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------------------------------
 #pragma once
 
-#include "CoreMinimal.h"
-#include "EnhancedInputComponent.h"
-#include "AuraInputComponent.generated.h"
+#include <CoreMinimal.h>
+#include <EnhancedInputComponent.h>
 
+#include "AuraInputConfig.h"
 
+#include <AuraInputComponent.generated.h>
+
+//----------------------------------------------------------------------------------------------------
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class AURA_API UAuraInputComponent : public UEnhancedInputComponent
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this component's properties
-	UAuraInputComponent();
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	template <class UserClass, typename PressedFuncType, typename ReleaseFuncType, typename HeldFuncType>
+	void BindAbilityActions(UAuraInputConfig const* InputConfig, UserClass* Object, PressedFuncType PressedFunc, ReleaseFuncType ReleaseFunc, HeldFuncType HeldFunc);
 };
+
+template <class UserClass, typename PressedFuncType, typename ReleaseFuncType, typename HeldFuncType>
+void UAuraInputComponent::BindAbilityActions(UAuraInputConfig const* InputConfig, UserClass* Object, PressedFuncType PressedFunc, ReleaseFuncType ReleaseFunc, HeldFuncType HeldFunc)
+{
+	check(InputConfig)
+
+	for (FAuraInputAction const& Action : InputConfig->AbilityInputActions)
+	{
+		if (Action.InputAction == nullptr) continue;
+		if (!Action.InputTag.IsValid()) continue;
+
+		if (PressedFunc != nullptr)
+		{
+			BindAction(Action.InputAction, ETriggerEvent::Started, Object, PressedFunc, Action.InputTag);
+		}
+
+		if (ReleaseFunc != nullptr)
+		{
+			BindAction(Action.InputAction, ETriggerEvent::Completed, Object, ReleaseFunc, Action.InputTag);
+		}
+
+		if (HeldFunc != nullptr)
+		{
+			BindAction(Action.InputAction, ETriggerEvent::Triggered, Object, HeldFunc, Action.InputTag);
+		}
+	}
+}
