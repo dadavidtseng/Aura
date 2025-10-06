@@ -22,6 +22,9 @@ public:
 	void AbilityActorInfoSet();
 	void AddCharacterAbilities(TArray<TSubclassOf<UGameplayAbility>> const& StartupAbilities);
 
+	void AbilityInputTagHeld(FGameplayTag const InputTag);
+	void AbilityInputTagReleased(FGameplayTag const InputTag);
+
 	FEffectAssetTags EffectAssetTags;
 
 protected:
